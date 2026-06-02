@@ -1,0 +1,43 @@
+.cursor {
+  display: inline-block;
+  margin-left: 5px;
+  width: 2px;
+  height: 1em;
+  background-color: rgb(0, 0, 0);
+  animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+h1 {
+  line-height: 500px;
+}
+
+.lev {
+  background: linear-gradient(90deg, #8d7420, #ff8f00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-top: 50px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ffb74d, #ff9800);
+  color: #000;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
