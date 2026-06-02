@@ -4,141 +4,171 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+
     <title>Lev viagens</title>
 
     <!-- css root -->
     <link rel="stylesheet" href="css/style-root.css">
 
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet" />
+
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
-    
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a style="color: black;" class="navbar-brand" href="#page-top">Lev Viagens</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
+
+    <!--navigation-->
+    <nav style="padding: 0px;" class="navbar bg-body-tertiary fixed-top">
+        <div style="background: linear-gradient(135deg, #ffffff, #00a2ff); border-bottom: 1px solid #005485;"
+            class="container-fluid">
+            <a class="navbar-brand" href="#"><img width="80" src="../../media lev viagens/img/logo lev.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a style="color: black;" class="nav-link" href="#about">Sobre</a></li>
-                    <li class="nav-item"><a style="color: black;" class="nav-link" href="#projects">Projetos</a></li>
-                    <li class="nav-item"><a style="color: black;" class="nav-link" href="#signup">Contato</a></li>
-                </ul>
+
+
+            <div style="background-image: linear-gradient(#ffffff, #00a2ff);" class="offcanvas offcanvas-end"
+                tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img width="80"
+                            src="../../media lev viagens/img/logo lev.png" alt=""></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a id="animation-hover" class="nav-link active" aria-current="page" href="#"> <img
+                                    width="20" src="../../media lev viagens/icons/ticket.png" alt="Ingressos">
+                                INGRESSOS</a>
+                            <a id="animation-hover" class="nav-link active" aria-current="page" href="#"> <img
+                                    width="20" src="../../media lev viagens/icons/floco.png" alt="Ingressos">
+                                SNOWLAND</a>
+                            <a id="animation-hover" class="nav-link active" aria-current="page" href="#"><img width="20"
+                                    src="../../media lev viagens/icons/foguete.png" alt="Ingressos"> SPACE ADVENTURE
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Minha conta</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Mais...
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Contatos</a></li>
+                                <li><a class="dropdown-item" href="#">Falar com um representante</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Trabalhe conosco</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
-    
-    
+
     <!-- Masthead-->
     <header class="masthead">
         <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
             <div class="d-flex justify-content-center">
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">
-                        Deixe sua viagem <br>
+                        Deixe sua <span class="space">viagem</span> <br>
                         <span class="lev">mais lev</span><span class="cursor"></span>
                     </h1>
                     <h2 id="slogan" class="text-white-50 mx-auto mt-2 mb-5"><span style="color: black;">Mais presença,
                             menos preocupação</span></h2>
-                </div>
-            </div>
-        </div>
-    
-    </header>
 
-    <!-- About-->
-    <section class="about-section text-center" id="about">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="text-white mb-4">Pensado justamente para você</h2>
-                    <p class="text-white-50">
-                        Pensando justamente em você, criamos a Lev Viagens, uma plataforma de viagens que tem como
-                        objetivo facilitar a vida dos viajantes, oferecendo uma experiência única e personalizada. Com a
-                        Lev Viagens, você pode planejar sua viagem de forma rápida e fácil, escolhendo entre uma
-                        variedade de destinos, hospedagens e atividades. Nossa plataforma é intuitiva e fácil de usar,
-                        permitindo que você encontre as melhores opções para sua viagem em poucos cliques. Além disso,
-                        oferecemos suporte ao cliente 24 horas por dia, 7 dias por semana, para garantir que sua
-                        experiência seja a melhor possível. Deixe sua viagem lev com a Lev Viagens!
-                    </p>
-                </div>
-            </div>
-            <img class="img-fluid" src="../../media lev viagens/img/celular.png" alt="..." />
-        </div>
-    </section>
-    
-    
-    <!-- Projects-->
-    <section class="projects-section bg-light" id="projects">
-        <div class="container px-4 px-lg-5">
-            <!-- Featured Project Row-->
-            <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0"
-                        src="../../media lev viagens/Banner-lev1.png" alt="..." width="810px" /></div>
-                <div class="col-xl-4 col-lg-5">
-                    <div class="featured-text text-center text-lg-left">
-                        <h4>Você precisa de facilidade?</h4>
-                        <p class="text-black-50 mb-0">Deixe sua viagem lev!<br> não se preocupe e tenha presença para
-                            quem você ama</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Project One Row-->
-            <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                <div class="col-lg-6"><img class="img-fluid" src="../../media lev viagens/cas-1.png" alt="..." /></div>
-                <div class="col-lg-6">
-                    <div class="bg-black text-center h-100 project">
-                        <div class="d-flex h-100">
-                            <div class="project-text w-100 my-auto text-center text-lg-left">
-                                <h4 class="text-white"><img width="50px" src="../../media lev viagens/gif/barra.gif"
-                                        alt=""></h4>
-                                <p class="mb-0 text-white-50"><span style="color: white;">Facilidade para sua mobilidade
-                                        é fundamental para sua presença em momentos importantes! <br> Não deixe isso
-                                        impedir de estar com quem ama</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Project Two Row-->
-            <div class="row gx-0 justify-content-center">
-                <div class="col-lg-6"><img class="img-fluid" src="../../media lev viagens/cas.png" alt="..." /></div>
-                <div class="col-lg-6 order-lg-first">
-                    <div class="bg-black text-center h-100 project">
-                        <div class="d-flex h-100">
-                            <div class="project-text w-100 my-auto text-center text-lg-right">
-                                <h4 class="text-white"><img width="50px" src="../../media lev viagens/gif/barra.gif"
-                                        alt=""></h4>
-                                <p class="mb-0 text-white-50"><span style="color: white;">Seu pequeno ainda precisa de
-                                        você?<br>Aqui você pode encontrar soluções para tornar sua mobilidade mais fácil
-                                        e confortável, permitindo que você esteja presente em momentos importantes com
-                                        as pessoas que ama.</span></p>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="../../media lev viagens/icons/seta.png" alt="Imagem de um foguete" width="80px">
                 </div>
             </div>
         </div>
-    </section>
-    
-    
+    </header>
+    <!--serviços-->
+    <main id="services">
+        <section class="carousel">
+
+            <div class="slides">
+
+                <div class="slide active">
+                    <img src="../../media lev viagens/passeios/teste2.png" alt="Imagem 1">
+                </div>
+
+                <div class="slide">
+                    <img src="../../media lev viagens/passeios/joli.png" alt="Imagem 2">
+                </div>
+
+                <div class="slide">
+                    <img src="../../media lev viagens/passeios/emiefi.png" alt="Imagem 3">
+                </div>
+
+            </div>
+
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+
+            
+        </section>
+
+
+        <!--Cards-->
+        <section class="card">
+            
+            <h3 class="tittle-ofertas">Melhores ofertas no momento</h3>
+
+            <div class="carousel">
+
+                <button class="arrow prev">❮</button>
+
+                <div class="track">
+
+                    <div class="card">
+                        <img src="../../media lev viagens/passeios/emiefi.png">
+                        <div class="info">
+                            <h3>Maria fumaça</h3>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="../../media lev viagens/passeios/joli.png">
+                        <div class="info">
+                            <h3>Jolimont</h3>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="../../media lev viagens/passeios/teste2.png">
+                        <div class="info">
+                            <h3>Snowland</h3>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+                <button class="arrow next">❯</button>
+
+            </div>
+        </section>
+    </main>
+
+
     <!-- Signup-->
     <section class="signup-section" id="signup">
         <div class="container px-4 px-lg-5">
@@ -193,7 +223,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Contact-->
     <section class="contact-section bg-black">
         <div class="container px-4 px-lg-5">
@@ -236,8 +266,8 @@
             </div>
         </div>
     </section>
-    
-    
+
+
     <!-- Footer-->
     <footer class="footer bg-black small text-center text-white-50">
         <div class="container px-4 px-lg-5">Copyright &copy; levviagens 2026</div>
@@ -251,6 +281,73 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+    <!--Carrosel cards-->
+    <script>
+        const track = document.querySelector('.track');
+
+        let pos = 0;
+
+        document.querySelector('.next').onclick = () => {
+            pos -= 320;
+            track.style.transform = `translateX(${pos}px)`;
+        };
+
+        document.querySelector('.prev').onclick = () => {
+            pos += 320;
+
+            if (pos > 0) {
+                pos = 0;
+            }
+
+            track.style.transform = `translateX(${pos}px)`;
+        };
+    </script>
+
+    <!--carrosel de imagens-->
+    <script>
+        const slides = document.querySelector('.slides');
+        const slide = document.querySelectorAll('.slide');
+
+        let index = 0;
+
+        function showSlide(i) {
+
+            if (i >= slide.length) {
+                index = 0;
+            }
+
+            if (i < 0) {
+                index = slide.length - 1;
+            }
+
+            slides.style.transform =
+                `translateX(-${index * 100}%)`;
+        }
+
+        document.querySelector('.next')
+            .addEventListener('click', () => {
+
+                index++;
+                showSlide(index);
+
+            });
+
+        document.querySelector('.prev')
+            .addEventListener('click', () => {
+
+                index--;
+                showSlide(index);
+
+            });
+
+        setInterval(() => {
+
+            index++;
+            showSlide(index);
+
+        }, 5000);
+    </script>
 </body>
 
 </html>
