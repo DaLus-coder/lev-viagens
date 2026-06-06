@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais Reservados</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+        }
+
+        /* TOPO */
+
+        .hero {
+            background: #f2cf68;
+            height: 500px;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            text-align: center;
+
+            padding-top: 140px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+
+            max-width: 500px;
+
+            margin: 0 auto;
+
+            padding: 0 20px;
+        }
+
+        /* ÁREA DE BAIXO */
+
+        .content {
+            position: relative;
+            min-height: 900px;
+        }
+
+        /* CARD FLUTUANTE */
+
+        .carousel-wrapper {
+
+            width: 900px;
+            max-width: 90%;
+
+            margin: auto;
+
+            position: relative;
+
+            top: -180px;
+        }
+
+        /* CARROSSEL */
+
+        .carousel {
+            overflow: hidden;
+            border-radius: 35px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, .15);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform .5s ease;
+        }
+
+        .card {
+            min-width: 100%;
+            background: white;
+        }
+
+        .card img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            text-align: center;
+            padding: 35px;
+        }
+
+        .card-info h2 {
+            margin-bottom: 15px;
+        }
+
+        .card-info p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .card-info button {
+
+            border: none;
+
+            background: #efb400;
+
+            color: white;
+
+            padding: 16px 40px;
+
+            border-radius: 50px;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        /* SETAS */
+
+        .arrow {
+
+            width: 60px;
+            height: 60px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            cursor: pointer;
+
+            font-size: 2rem;
+
+            z-index: 10;
+        }
+
+        .left {
+            left: -90px;
+        }
+
+        .right {
+            right: -90px;
+        }
+
+        /* BOLINHAS */
+
+        .dots {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: -120px;
+        }
+
+        .dot {
+
+            width: 12px;
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: #ccc;
+        }
+
+        .dot.active {
+            background: #efb400;
+        }
+
+        /* BENEFÍCIOS */
+
+        .benefits {
+
+            width: 1200px;
+            max-width: 90%;
+
+            margin: 80px auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 30px;
+        }
+
+        .benefit {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, .05);
+        }
+
+        .benefit h3 {
+            margin-bottom: 10px;
+        }
+
+        .benefit p {
+            color: #666;
+        }
+
+        /* RESPONSIVO */
+
+        @media(max-width:768px) {
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .card img {
+                height: 240px;
+            }
+
+            .left {
+                left: -20px;
+            }
+
+            .right {
+                right: -20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .hero {
+
+                height: 650px;
+
+                padding-top: 170px;
+            }
+
+            .hero-content {
+
+                width: 100%;
+
+                padding: 0 20px;
+            }
+
+            .carousel-wrapper {
+
+                top: -140px;
+            }
+
+            .card img {
+                height: 220px;
+            }
+
+            .card-info {
+                padding: 20px;
+            }
+
+            .card-info h2 {
+                font-size: 1.3rem;
+            }
+
+            .card-info p {
+                font-size: .95rem;
+            }
+
+            .left {
+                left: -10px;
+            }
+
+            .right {
+                right: -10px;
+            }
+
+        }
+
+        @media (max-width: 420px) {
+
+            .hero {
+                height: 700px;
+            }
+
+            .hero h1 {
+                font-size: 3.3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .logo-island {
+                width: 120px;
+                height: 100px;
+            }
+
+            .menu-btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .carousel-wrapper {
+                width: 95%;
+                top: -120px;
+            }
+
+        }
+
+        /*header style*/
+
+        /* HEADER MOBILE */
+
+        .mobile-header {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 9999;
+        } 
+
+        .logo-island {
+            position: absolute;
+
+            top: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 120px;
+            height: 100px;
+
+            background: #012f87;
+
+            border-radius: 0 0 25px 25px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+        }
+
+        .logo-island img {
+            width: 90px;
+        }
+
+        .menu-btn {
+
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            width: 55px;
+            height: 55px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            z-index: 10001;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+        }
+
+        .mobile-menu {
+
+            position: fixed;
+
+            top: 0;
+            right: -280px;
+
+            width: 280px;
+            height: 100vh;
+
+            background: white;
+
+            transition: .3s;
+
+            z-index: 10000;
+
+            padding-top: 120px;
+
+            box-shadow: -10px 0 30px rgba(0, 0, 0, .15);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+
+            padding: 18px;
+
+            text-decoration: none;
+
+            color: #222;
+
+            font-weight: 600;
+
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="mobile-header">
+
+        <div class="logo-island">
+            <img src="logo.png" alt="LEV Viagem">
+        </div>
+
+        <button id="menuBtn" class="menu-btn">
+            ☰
+        </button>
+
+        <nav id="mobileMenu" class="mobile-menu">
+            <a href="#">Início</a>
+            <a href="#">Passeios</a>
+            <a href="#">Destinos</a>
+            <a href="#">Contato</a>
+        </nav>
+
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>Mais Reservados</h1>
+            <p>Escolha o melhor equipamento para sua aventura.</p>
+        </div>
+
+    </section>
+
+    <section class="content">
+
+        <div class="carousel-wrapper">
+
+            <button class="arrow left">&#10094;</button>
+
+            <div class="carousel">
+
+                <div class="carousel-track">
+
+                    <div class="card">
+                        <img src="scooter.jpeg">
+
+                        <div class="card-info">
+                            <h2>Scooter eletrica</h2>
+
+                            <p>
+                                Muito mais agilidade para quem quer explorar a cidade de forma leve e divertida!
+                            </p>
+
+                            <button>Alugar Agora</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="carrinho.jpeg">
+
+                        <div class="card-info">
+                            <h2>Carrinho para bebê</h2>
+
+                            <p>
+                                Tenha conforto e segurança para quem precisa
+                            </p>
+
+                            <button>Alugar Agora</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="andando_de_idoso_fdp.jpeg">
+
+                        <div class="card-info">
+                            <h2>Andador para idoso</h2>
+
+                            <p>
+                                Mobilidade garantida para quem garantiu os seus sonhos!
+                            </p>
+
+                            <button>Alugar Agora</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="arrow right">&#10095;</button>
+
+        </div>
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <div class="benefits">
+
+            <div class="benefit">
+                <h3>Segurança Total</h3>
+                <p>Equipamentos revisados e seguros para você.</p>
+            </div>
+
+            <div class="benefit">
+                <h3>Melhores Avaliações</h3>
+                <p>Clientes satisfeitos e aventuras inesquecíveis.</p>
+            </div>
+
+            <div class="benefit">
+                <h3>Suporte 24h</h3>
+                <p>Atendimento sempre disponível.</p>
+            </div>
+
+            <div class="benefit">
+                <h3>Melhores Preços</h3>
+                <p>Condições especiais para você.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+        const track = document.querySelector(".carousel-track");
+
+        const cards = document.querySelectorAll(".card");
+
+        const dots = document.querySelectorAll(".dot");
+
+        const next = document.querySelector(".right");
+        const prev = document.querySelector(".left");
+
+        let current = 0;
+
+        function updateCarousel() {
+
+            track.style.transform =
+                `translateX(-${current * 100}%)`;
+
+            dots.forEach(dot =>
+                dot.classList.remove("active")
+            );
+
+            dots[current].classList.add("active");
+        }
+
+        next.addEventListener("click", () => {
+
+            current++;
+
+            if (current >= cards.length) {
+                current = 0;
+            }
+
+            updateCarousel();
+        });
+
+        prev.addEventListener("click", () => {
+
+            current--;
+
+            if (current < 0) {
+                current = cards.length - 1;
+            }
+
+            updateCarousel();
+        });
+
+        /* Auto-play */
+
+        setInterval(() => {
+
+            current++;
+
+            if (current >= cards.length) {
+                current = 0;
+            }
+
+            updateCarousel();
+
+        }, 5000);
+
+        updateCarousel();
+
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuBtn.addEventListener("click", function () {
+
+            mobileMenu.classList.toggle("active");
+
+        });
+    </script>
+
+</body>
+
+</html>
