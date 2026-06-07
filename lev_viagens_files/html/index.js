@@ -72,6 +72,8 @@ menuBtn.addEventListener("click", function () {
 
 //folders content
 
+// ABAS
+
 const tabBtns = document.querySelectorAll(".tab-btn");
 const tabContents = document.querySelectorAll(".tab-content");
 
@@ -92,6 +94,61 @@ tabBtns.forEach(btn => {
         document
             .getElementById(btn.dataset.tab)
             .classList.add("active");
+
+    });
+
+});
+
+
+// CARROSSEIS DAS ABAS
+
+document.querySelectorAll(".tab-carousel")
+.forEach(carousel => {
+
+    const cards =
+        carousel.querySelectorAll(".tab-card");
+
+    const prev =
+        carousel.querySelector(".prev");
+
+    const next =
+        carousel.querySelector(".next");
+
+    let current = 0;
+
+    function showCard(index){
+
+        cards.forEach(card =>
+            card.classList.remove("active")
+        );
+
+        cards[index].classList.add("active");
+    }
+
+    showCard(0);
+
+    next.addEventListener("click", () => {
+
+        current++;
+
+        if(current >= cards.length){
+            current = 0;
+        }
+
+        showCard(current);
+
+    });
+
+    prev.addEventListener("click", () => {
+
+        current--;
+
+        if(current < 0){
+            current = cards.length - 1;
+        }
+
+        showCard(current);
+
     });
 
 });
