@@ -12,7 +12,7 @@ body {
 /* TOPO */
 
 .hero {
-    background: #f2cf68;
+    background: #012f87;
     height: 500px;
 
     display: flex;
@@ -29,6 +29,8 @@ body {
     font-weight: 800;
     line-height: 1.05;
     margin-bottom: 15px;
+
+    color: white;
 }
 
 .hero p {
@@ -39,6 +41,8 @@ body {
     margin: 0 auto;
 
     padding: 0 20px;
+
+    color: #eee;
 }
 
 /* ÁREA DE BAIXO */
@@ -345,7 +349,7 @@ body {
     width: 120px;
     height: 100px;
 
-    background: #012f87;
+    background: #FFB700;
 
     border-radius: 0 0 25px 25px;
 
@@ -426,4 +430,64 @@ body {
     font-weight: 600;
 
     border-bottom: 1px solid #eee;
+}
+
+/*_____________________________________________________________________________________________________*/
+/*_____________________________________________________________________________________________________*/
+/*_____________________________________________________________________________________________________*/
+/*_____________________________________________________________________________________________________*/
+/*_____________________________________________________________________________________________________*/
+/*_____________________________________________________________________________________________________*/
+
+/*folders content style*/
+
+.tabs-section {
+    width: 1200px;
+    min-height: 500px;
+    max-width: 90%;
+    margin: 60px auto;
+}
+
+.tabs-header {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px;
+    color: #777;
+}
+
+
+.tab-btn.active {
+    color: #012f87;
+    border-bottom: 3px solid #efb400;
+}
+
+.tab-content{
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+
+    position: absolute;
+    width: 100%;
+}
+
+.tab-content.active{
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
 }
