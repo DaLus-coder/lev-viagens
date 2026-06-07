@@ -72,7 +72,7 @@ menuBtn.addEventListener("click", function () {
 
 //folders content
 
-// ABAS
+/* TABS */
 
 const tabBtns = document.querySelectorAll(".tab-btn");
 const tabContents = document.querySelectorAll(".tab-content");
@@ -100,55 +100,65 @@ tabBtns.forEach(btn => {
 });
 
 
-// CARROSSEIS DAS ABAS
+/* CARROSSEIS */
 
-document.querySelectorAll(".tab-carousel")
-.forEach(carousel => {
+document.querySelectorAll(".mini-carousel")
+    .forEach(carousel => {
 
-    const cards =
-        carousel.querySelectorAll(".tab-card");
+        const track =
+            carousel.querySelector(".mini-track");
 
-    const prev =
-        carousel.querySelector(".prev");
+        const cards =
+            carousel.querySelectorAll(".mini-card");
 
-    const next =
-        carousel.querySelector(".next");
+        const prev =
+            carousel.querySelector(".prev");
 
-    let current = 0;
+        const next =
+            carousel.querySelector(".next");
 
-    function showCard(index){
+        let current = 0;
 
-        cards.forEach(card =>
-            card.classList.remove("active")
-        );
+        function update(){
 
-        cards[index].classList.add("active");
-    }
+    const cardWidth =
+        cards[0].offsetWidth;
 
-    showCard(0);
+    const cardStyle =
+        getComputedStyle(cards[0]);
 
-    next.addEventListener("click", () => {
+    const marginLeft =
+        parseFloat(cardStyle.marginLeft);
 
-        current++;
+    const marginRight =
+        parseFloat(cardStyle.marginRight);
 
-        if(current >= cards.length){
-            current = 0;
-        }
+    const totalWidth =
+        cardWidth + marginLeft + marginRight;
 
-        showCard(current);
+    track.style.transform =
+        `translateX(-${current * totalWidth}px)`;
+}
+        next.addEventListener("click", () => {
+
+            current++;
+
+            if (current >= cards.length) {
+                current = 0;
+            }
+
+            update();
+        });
+
+        prev.addEventListener("click", () => {
+
+            current--;
+
+            if (current < 0) {
+                current = cards.length - 1;
+            }
+
+            update();
+        });
 
     });
-
-    prev.addEventListener("click", () => {
-
-        current--;
-
-        if(current < 0){
-            current = cards.length - 1;
-        }
-
-        showCard(current);
-
-    });
-
-});
