@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CMS ViagensLev</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input, select {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            width: 300px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .card-admin {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>CMS ViagensLev</h1>
+
+<!-- FORM CORRIGIDO -->
+<input id="titulo" placeholder="Título">
+<input id="descricao" placeholder="Descrição">
+
+<input type="file" id="file">
+<button onclick="uploadImagem()">Upload imagem</button>
+
+<input id="imagem" placeholder="URL da imagem">
+
+<select id="categoria">
+    <option value="alugueis">Alugueis</option>
+    <option value="experiencias">Experiencias</option>
+    <option value="gastronomia">Gastronomia</option>
+</select>
+
+<input id="botao_texto" placeholder="Texto do botão">
+
+<button onclick="saveCard()">Salvar card</button>
+
+<hr>
+
+<div id="listaCards"></div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>

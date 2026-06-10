@@ -1,164 +1,156 @@
+const API = "http://localhost:3000/api";
 
-const track = document.querySelector(".carousel-track");
-
-const cards = document.querySelectorAll(".card");
-
-const dots = document.querySelectorAll(".dot");
-
-const next = document.querySelector(".right");
-const prev = document.querySelector(".left");
-
-let current = 0;
-
-function updateCarousel() {
-
-    track.style.transform =
-        `translateX(-${current * 100}%)`;
-
-    dots.forEach(dot =>
-        dot.classList.remove("active")
-    );
-
-    dots[current].classList.add("active");
-}
-
-next.addEventListener("click", () => {
-
-    current++;
-
-    if (current >= cards.length) {
-        current = 0;
-    }
-
-    updateCarousel();
+window.addEventListener("load", async () => {
+    initTabs();
+    initMainCarousel();
+    initMiniCarousels(); // 👈 NOVO
+    await loadCMS();
 });
 
-prev.addEventListener("click", () => {
+/* =========================
+   CMS LOAD
+========================= */
+async function loadCMS() {
 
-    current--;
+    const res = await fetch(API + "/cards");
+    const cards = await res.json();
 
-    if (current < 0) {
-        current = cards.length - 1;
-    }
+    const maps = {
+        alugueis: document.getElementById("alugueis-track"),
+        experiencias: document.getElementById("experiencias-track"),
+        gastronomia: document.getElementById("gastronomia-track")
+    };
 
-    updateCarousel();
-});
-
-/* Auto-play */
-
-setInterval(() => {
-
-    current++;
-
-    if (current >= cards.length) {
-        current = 0;
-    }
-
-    updateCarousel();
-
-}, 5000);
-
-updateCarousel();
-
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-
-menuBtn.addEventListener("click", function () {
-
-    mobileMenu.classList.toggle("active");
-
-});
-
-
-//folders content
-
-/* TABS */
-
-const tabBtns = document.querySelectorAll(".tab-btn");
-const tabContents = document.querySelectorAll(".tab-content");
-
-tabBtns.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-        tabBtns.forEach(b =>
-            b.classList.remove("active")
-        );
-
-        tabContents.forEach(c =>
-            c.classList.remove("active")
-        );
-
-        btn.classList.add("active");
-
-        document
-            .getElementById(btn.dataset.tab)
-            .classList.add("active");
-
+    Object.values(maps).forEach(el => {
+        if (el) el.innerHTML = "";
     });
 
-});
-
-
-/* CARROSSEIS */
-
-document.querySelectorAll(".mini-carousel")
-    .forEach(carousel => {
-
-        const track =
-            carousel.querySelector(".mini-track");
-
-        const cards =
-            carousel.querySelectorAll(".mini-card");
-
-        const prev =
-            carousel.querySelector(".prev");
-
-        const next =
-            carousel.querySelector(".next");
-
-        let current = 0;
-
-        function update(){
-
-    const cardWidth =
-        cards[0].offsetWidth;
-
-    const cardStyle =
-        getComputedStyle(cards[0]);
-
-    const marginLeft =
-        parseFloat(cardStyle.marginLeft);
-
-    const marginRight =
-        parseFloat(cardStyle.marginRight);
-
-    const totalWidth =
-        cardWidth + marginLeft + marginRight;
-
-    track.style.transform =
-        `translateX(-${current * totalWidth}px)`;
+    cards.forEach(card => {
+        const el = createCard(card);
+        if (maps[card.categoria]) {
+            maps[card.categoria].appendChild(el);
+        }
+    });
 }
-        next.addEventListener("click", () => {
 
-            current++;
+/* =========================
+   CARD
+========================= */
+function createCard(card) {
 
-            if (current >= cards.length) {
-                current = 0;
-            }
+    const div = document.createElement("div");
+    div.className = "mini-card";
 
-            update();
-        });
+    div.innerHTML = `
+        <img src="${card.imagem}">
+        <h3>${card.titulo}</h3>
+        <p>${card.descricao}</p>
+        <button>${card.botao_texto}</button>
+    `;
+
+    return div;
+}
+
+/* =========================
+   CARROSSEL PRINCIPAL
+========================= */
+function initMainCarousel() {
+
+    const track = document.querySelector(".carousel-track");
+    const cards = document.querySelectorAll(".carousel-track .card");
+    const left = document.querySelector(".arrow.left");
+    const right = document.querySelector(".arrow.right");
+
+    if (!track || !cards.length || !left || !right) return;
+
+    let index = 0;
+    const total = cards.length;
+
+    function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    left.addEventListener("click", () => {
+        index = Math.max(0, index - 1);
+        update();
+    });
+
+    right.addEventListener("click", () => {
+        index = Math.min(total - 1, index + 1);
+        update();
+    });
+
+    update();
+}
+
+/* =========================
+   MINI CARROSSEL DOS TABS (NOVO - CORRIGIDO)
+========================= */
+function initMiniCarousels() {
+
+    const carousels = document.querySelectorAll(".mini-carousel");
+
+    carousels.forEach(carousel => {
+
+        const track = carousel.querySelector(".mini-track");
+        const prev = carousel.querySelector(".prev");
+        const next = carousel.querySelector(".next");
+
+        if (!track || !prev || !next) return;
+
+        let index = 0;
+
+        function getCardWidth() {
+            const card = track.querySelector(".mini-card");
+            if (!card) return 0;
+            return card.getBoundingClientRect().width + 20; // margem
+        }
+
+        function update() {
+            const width = getCardWidth();
+            track.style.transform = `translateX(-${index * width}px)`;
+        }
 
         prev.addEventListener("click", () => {
-
-            current--;
-
-            if (current < 0) {
-                current = cards.length - 1;
-            }
-
+            const max = track.children.length - 1;
+            index = Math.max(0, index - 1);
             update();
         });
 
+        next.addEventListener("click", () => {
+            const max = track.children.length - 1;
+            index = Math.min(max, index + 1);
+            update();
+        });
+
+        window.addEventListener("resize", update);
+
+        update();
     });
+}
+
+/* =========================
+   TABS
+========================= */
+function initTabs() {
+
+    const buttons = document.querySelectorAll(".tab-btn");
+    const contents = document.querySelectorAll(".tab-content");
+
+    buttons.forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+            const target = btn.getAttribute("data-tab");
+
+            buttons.forEach(b => b.classList.remove("active"));
+            contents.forEach(c => c.classList.remove("active"));
+
+            btn.classList.add("active");
+
+            const section = document.getElementById(target);
+
+            if (section) section.classList.add("active");
+        });
+    });
+}
