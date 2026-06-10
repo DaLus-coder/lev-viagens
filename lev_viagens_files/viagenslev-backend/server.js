@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use('/equipamentos', equipamentosRoutes);
 
 const PORT = 3000;
 
