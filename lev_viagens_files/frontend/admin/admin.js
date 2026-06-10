@@ -63,11 +63,17 @@ async function uploadImagem() {
 ========================= */
 async function saveCard() {
 
-    const titulo = document.getElementById("titulo").value;
-    const descricao = document.getElementById("descricao").value;
-    const imagem = document.getElementById("imagem").value;
+    const titulo = document.getElementById("titulo").value.trim();
+    const descricao = document.getElementById("descricao").value.trim();
+    const imagem = document.getElementById("imagem").value.trim();
     const categoria = document.getElementById("categoria").value;
-    const botao_texto = document.getElementById("botao_texto").value;
+    const botao_texto = document.getElementById("botao_texto").value.trim();
+
+    // 🔴 VALIDAÇÃO (OBRIGATÓRIO PREENCHER TUDO)
+    if (!titulo || !descricao || !imagem || !categoria || !botao_texto) {
+        alert("Preencha todos os campos antes de salvar.");
+        return;
+    }
 
     const data = {
         titulo,
@@ -81,6 +87,12 @@ async function saveCard() {
         ? `${API}/admin/cards/${window.editId}`
         : `${API}/admin/cards`;
 
+    const confirmAction = window.editId
+        ? confirm("Tem certeza que deseja EDITAR este card?")
+        : confirm("Tem certeza que deseja CRIAR este card?");
+
+    if (!confirmAction) return;
+
     await fetch(url, {
         method: window.editId ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
@@ -91,6 +103,43 @@ async function saveCard() {
 
     clearForm();
     loadAdmin();
+
+    alert("Ação realizada com sucesso!");
+}
+
+async function deleteCard(id) {
+
+    const confirmDelete = confirm("Tem certeza que deseja EXCLUIR este card?");
+
+    if (!confirmDelete) return;
+
+    await fetch(`${API}/admin/cards/${id}`, {
+        method: "DELETE"
+    });
+
+    alert("Card excluído com sucesso!");
+
+    loadAdmin();
+}
+
+async function editCard(id) {
+
+    const confirmEdit = confirm("Deseja editar este card?");
+
+    if (!confirmEdit) return;
+
+    const res = await fetch(API + "/cards");
+    const cards = await res.json();
+
+    const card = cards.find(c => c.id === id);
+
+    window.editId = id;
+
+    document.getElementById("titulo").value = card.titulo;
+    document.getElementById("descricao").value = card.descricao;
+    document.getElementById("imagem").value = card.imagem;
+    document.getElementById("categoria").value = card.categoria;
+    document.getElementById("botao_texto").value = card.botao_texto;
 }
 
 /* =========================

@@ -60,6 +60,7 @@ function initMainCarousel() {
     const cards = document.querySelectorAll(".carousel-track .card");
     const left = document.querySelector(".arrow.left");
     const right = document.querySelector(".arrow.right");
+    const dots = document.querySelectorAll(".dot");
 
     if (!track || !cards.length || !left || !right) return;
 
@@ -67,7 +68,14 @@ function initMainCarousel() {
     const total = cards.length;
 
     function update() {
+
+        // move carrossel
         track.style.transform = `translateX(-${index * 100}%)`;
+
+        // atualiza dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
     }
 
     left.addEventListener("click", () => {
