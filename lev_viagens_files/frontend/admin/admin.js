@@ -2,9 +2,8 @@ const API = "http://localhost:3000/api";
 
 let editId = null;
 
-/* =========================
-   MENU MOBILE
-========================= */
+/* ================= SIDEBAR MOBILE ================= */
+
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const menuToggle = document.getElementById("menuToggle");
@@ -14,43 +13,65 @@ menuToggle.addEventListener("click", () => {
     overlay.classList.toggle("active");
 });
 
+/* 🔥 AGORA FECHA AO CLICAR FORA */
 overlay.addEventListener("click", () => {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
 });
 
-/* =========================
-   LOAD CARDS
-========================= */
+/* ================= LOAD CARDS ================= */
+
 async function load() {
 
     const res = await fetch(API + "/cards");
     const cards = await res.json();
 
-    const container = document.getElementById("listaCards");
+    const container = document.getElementById("cards");
     container.innerHTML = "";
 
+    const grupos = {
+        alugueis: [],
+        experiencias: [],
+        gastronomia: []
+    };
+
     cards.forEach(c => {
-
-        const div = document.createElement("div");
-        div.className = "card-admin";
-
-        div.innerHTML = `
-            <img src="${c.imagem}">
-            <h3>${c.titulo}</h3>
-            <p>${c.categoria}</p>
-
-            <button onclick="editCard(${c.id})">Editar</button>
-            <button onclick="deleteCard(${c.id})">Excluir</button>
-        `;
-
-        container.appendChild(div);
+        if (grupos[c.categoria]) grupos[c.categoria].push(c);
     });
+
+    for (let grupo in grupos) {
+
+        const title = document.createElement("h2");
+        title.textContent = grupo.toUpperCase();
+        container.appendChild(title);
+
+        const grid = document.createElement("div");
+        grid.className = "cards-grid";
+
+        grupos[grupo].forEach(c => {
+
+            const div = document.createElement("div");
+            div.className = "card-admin";
+
+            div.innerHTML = `
+                <img src="${c.imagem}">
+                <h4>${c.titulo}</h4>
+
+                <div class="card-actions">
+                    <button class="edit-btn" onclick="edit(${c.id})">Editar</button>
+                    <button class="delete-btn" onclick="remove(${c.id})">Excluir</button>
+                </div>
+            `;
+
+            grid.appendChild(div);
+        });
+
+        container.appendChild(grid);
+    }
 }
 
-/* =========================
-   SAVE CARD
-========================= */
+/* ================= SAVE ================= */
+
 async function saveCard() {
 
     const titulo = document.getElementById("titulo").value.trim();
@@ -64,7 +85,7 @@ async function saveCard() {
         return;
     }
 
-    if (!confirm("Tem certeza que deseja salvar este card?")) return;
+    if (!confirm("Tem certeza?")) return;
 
     const data = { titulo, descricao, imagem, categoria, botao_texto };
 
@@ -74,49 +95,40 @@ async function saveCard() {
 
     const method = editId ? "PUT" : "POST";
 
-    const res = await fetch(url, {
+    await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     });
 
-    if (!res.ok) {
-        alert("Erro ao salvar card");
-        return;
-    }
-
     editId = null;
-    clearForm();
+    clear();
     load();
-
-    alert("Card salvo com sucesso!");
 }
 
-/* =========================
-   EDIT
-========================= */
-async function editCard(id) {
+/* ================= EDIT ================= */
+
+async function edit(id) {
 
     const res = await fetch(API + "/cards");
     const cards = await res.json();
 
-    const card = cards.find(c => c.id === id);
+    const c = cards.find(x => x.id === id);
 
     editId = id;
 
-    document.getElementById("titulo").value = card.titulo;
-    document.getElementById("descricao").value = card.descricao;
-    document.getElementById("imagem").value = card.imagem;
-    document.getElementById("categoria").value = card.categoria;
-    document.getElementById("botao_texto").value = card.botao_texto;
+    document.getElementById("titulo").value = c.titulo;
+    document.getElementById("descricao").value = c.descricao;
+    document.getElementById("imagem").value = c.imagem;
+    document.getElementById("categoria").value = c.categoria;
+    document.getElementById("botao_texto").value = c.botao_texto;
 }
 
-/* =========================
-   DELETE
-========================= */
-async function deleteCard(id) {
+/* ================= DELETE ================= */
 
-    if (!confirm("Excluir este card?")) return;
+async function remove(id) {
+
+    if (!confirm("Excluir card?")) return;
 
     await fetch(`${API}/admin/cards/${id}`, {
         method: "DELETE"
@@ -125,40 +137,61 @@ async function deleteCard(id) {
     load();
 }
 
-/* =========================
-   UPLOAD IMAGEM
-========================= */
+/* ================= CLEAR ================= */
+
+function clear(){
+    document.getElementById("titulo").value = "";
+    document.getElementById("descricao").value = "";
+    document.getElementById("imagem").value = "";
+    document.getElementById("botao_texto").value = "";
+}
+
+/* ================= UPLOAD IMAGEM ================= */
+
 async function uploadImagem() {
 
     const fileInput = document.getElementById("file");
     const imagemInput = document.getElementById("imagem");
 
-    if (!fileInput.files.length) {
-        alert("Selecione uma imagem");
+    if (!fileInput) {
+        alert("Input de arquivo não encontrado");
+        return;
+    }
+
+    if (!imagemInput) {
+        alert("Input de URL (imagem) não encontrado no HTML");
+        return;
+    }
+
+    if (!fileInput.files || fileInput.files.length === 0) {
+        alert("Selecione uma imagem primeiro!");
         return;
     }
 
     const formData = new FormData();
     formData.append("imagem", fileInput.files[0]);
 
-    const res = await fetch(`${API}/upload`, {
-        method: "POST",
-        body: formData
-    });
+    try {
+        const res = await fetch(`${API}/upload`, {
+            method: "POST",
+            body: formData
+        });
 
-    const data = await res.json();
-    imagemInput.value = data.url;
-}
+        const data = await res.json();
 
-/* =========================
-   CLEAR FORM
-========================= */
-function clearForm() {
-    document.getElementById("titulo").value = "";
-    document.getElementById("descricao").value = "";
-    document.getElementById("imagem").value = "";
-    document.getElementById("categoria").value = "alugueis";
-    document.getElementById("botao_texto").value = "";
+        if (!data.url) {
+            alert("Upload falhou no backend");
+            return;
+        }
+
+        imagemInput.value = data.url;
+
+        alert("Upload concluído!");
+
+    } catch (err) {
+        console.error(err);
+        alert("Erro ao enviar imagem");
+    }
 }
 
 /* INIT */
