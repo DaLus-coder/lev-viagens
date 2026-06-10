@@ -2,11 +2,17 @@
 <html lang="pt-BR">
 
 <head>
+    <!-- ================= META CONFIG ================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' stroke='black' stroke-width='1.5' d='M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.3l.9-4.6c.1-.4 0-.8-.3-1.1L14 1 7.6 7.4C7.2 7.8 7 8.3 7 8.9V19c0 1.1.9 2 2 2h9c.8 0 1.5-.5 1.8-1.2l3-7c.1-.2.2-.5.2-.8v-1z'/%3E%3C/svg%3E">
+
     <title>CMS ViagensLev</title>
 
+    <!-- ================= ESTILOS GERAIS ================= -->
     <style>
+
+        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
@@ -19,7 +25,9 @@
             overflow-x: hidden;
         }
 
-        /* ================= SIDEBAR ================= */
+        /* =====================================================
+           SIDEBAR (MENU LATERAL)
+        ===================================================== */
 
         .sidebar {
             position: fixed;
@@ -60,7 +68,9 @@
             color: black;
         }
 
-        /* ================= CONTENT ================= */
+        /* =====================================================
+           CONTEÚDO PRINCIPAL
+        ===================================================== */
 
         .cms-content {
             margin-left: 260px;
@@ -68,7 +78,9 @@
             transition: .3s;
         }
 
-        /* ================= INPUTS (AGORA BONITOS) ================= */
+        /* =====================================================
+           INPUTS E SELECTS
+        ===================================================== */
 
         input,
         select {
@@ -88,7 +100,9 @@
             box-shadow: 0 0 0 2px rgba(1, 47, 135, 0.2);
         }
 
-        /* ================= BOTÕES GERAIS ================= */
+        /* =====================================================
+           BOTÕES PADRÃO
+        ===================================================== */
 
         button {
             padding: 10px 14px;
@@ -110,7 +124,20 @@
             opacity: .85;
         }
 
-        /* ================= CARDS ================= */
+        /* botão upload */
+        .upload-btn {
+            background: #012f87;
+            color: white;
+            margin: 5px 0 10px;
+        }
+
+        .upload-btn:hover {
+            opacity: .85;
+        }
+
+        /* =====================================================
+           LISTAGEM DE CARDS
+        ===================================================== */
 
         #cards h2 {
             margin-top: 30px;
@@ -148,8 +175,7 @@
             padding: 0 10px 10px;
         }
 
-        /* botões dos cards (AGORA BONITOS) */
-
+        /* botões do card */
         .edit-btn {
             background: #012f87;
             color: white;
@@ -163,7 +189,9 @@
             flex: 1;
         }
 
-        /* ================= MOBILE MENU ================= */
+        /* =====================================================
+           MENU MOBILE
+        ===================================================== */
 
         .menu-toggle {
             display: none;
@@ -177,7 +205,7 @@
             z-index: 2000;
         }
 
-        /* overlay (AGORA FUNCIONA) */
+        /* overlay escuro */
         .overlay {
             position: fixed;
             inset: 0;
@@ -190,7 +218,9 @@
             display: block;
         }
 
-        /* ================= MOBILE ================= */
+        /* =====================================================
+           RESPONSIVIDADE
+        ===================================================== */
 
         @media(max-width:768px) {
 
@@ -219,27 +249,22 @@
             }
         }
 
-        .upload-btn {
-            background: #012f87;
-            color: white;
-            margin: 5px 0 10px;
-        }
-
-        .upload-btn:hover {
-            opacity: .85;
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- OVERLAY -->
+    <!-- =====================================================
+         OVERLAY (FECHAR MENU MOBILE)
+    ===================================================== -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- MENU BTN -->
+    <!-- botão do menu mobile -->
     <button class="menu-toggle" id="menuToggle">☰</button>
 
-    <!-- SIDEBAR -->
+    <!-- =====================================================
+         SIDEBAR
+    ===================================================== -->
     <aside class="sidebar" id="sidebar">
 
         <h2>CMS ViagensLev</h2>
@@ -250,34 +275,47 @@
 
     </aside>
 
-    <!-- CONTENT -->
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ===================================================== -->
     <div class="cms-content">
 
         <h1>Gerenciar Cards</h1>
 
+        <!-- FORMULÁRIO DE CADASTRO -->
         <input id="titulo" placeholder="Título">
         <input id="descricao" placeholder="Descrição">
+
+        <!-- UPLOAD DE IMAGEM -->
         <input type="file" id="file">
         <button type="button" onclick="uploadImagem()" class="upload-btn">
             Upload imagem
         </button>
+
+        <!-- URL DA IMAGEM -->
         <input id="imagem">
+
+        <!-- CATEGORIA -->
         <select id="categoria">
             <option value="alugueis">Alugueis</option>
             <option value="experiencias">Experiencias</option>
             <option value="gastronomia">Gastronomia</option>
         </select>
 
+        <!-- TEXTO DO BOTÃO -->
         <input id="botao_texto" placeholder="Texto botão">
 
+        <!-- SALVAR -->
         <button class="save-btn" onclick="saveCard()">Salvar card</button>
 
         <hr>
 
+        <!-- LISTA DE CARDS -->
         <div id="cards"></div>
 
     </div>
 
+    <!-- SCRIPT PRINCIPAL -->
     <script src="admin.js"></script>
 
 </body>

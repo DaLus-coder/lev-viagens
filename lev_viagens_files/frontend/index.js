@@ -1,41 +1,59 @@
 const API = "http://localhost:3000/api";
 
+
+/* =========================================================
+   INICIALIZAÇÃO GERAL DA PÁGINA
+========================================================= */
+
 window.addEventListener("load", async () => {
+
+    // Inicializa componentes da UI
     initTabs();
     initMainCarousel();
-    initMiniCarousels(); // 👈 NOVO
+    initMiniCarousels(); // carrosséis das abas
+
+    // Carrega dados do CMS
     await loadCMS();
 });
 
-/* =========================
-   CMS LOAD
-========================= */
+
+/* =========================================================
+   CARREGAMENTO DO CMS (BACKEND -> FRONTEND)
+========================================================= */
+
 async function loadCMS() {
 
+    // Busca cards no backend
     const res = await fetch(API + "/cards");
     const cards = await res.json();
 
+    // Mapeamento das categorias para seus containers
     const maps = {
         alugueis: document.getElementById("alugueis-track"),
         experiencias: document.getElementById("experiencias-track"),
         gastronomia: document.getElementById("gastronomia-track")
     };
 
+    // Limpa containers antes de renderizar
     Object.values(maps).forEach(el => {
         if (el) el.innerHTML = "";
     });
 
+    // Distribui cards por categoria
     cards.forEach(card => {
         const el = createCard(card);
+
         if (maps[card.categoria]) {
             maps[card.categoria].appendChild(el);
         }
     });
 }
 
-/* =========================
-   CARD
-========================= */
+
+/* =========================================================
+   CRIAÇÃO DE CARD (MINI CARD DOS TABS)
+========================================================= */
+
 function createCard(card) {
 
     const div = document.createElement("div");
@@ -51,9 +69,11 @@ function createCard(card) {
     return div;
 }
 
-/* =========================
-   CARROSSEL PRINCIPAL
-========================= */
+
+/* =========================================================
+   CARROSSEL PRINCIPAL (HERO CAROUSEL)
+========================================================= */
+
 function initMainCarousel() {
 
     const track = document.querySelector(".carousel-track");
@@ -62,27 +82,31 @@ function initMainCarousel() {
     const right = document.querySelector(".arrow.right");
     const dots = document.querySelectorAll(".dot");
 
+    // segurança caso elementos não existam
     if (!track || !cards.length || !left || !right) return;
 
     let index = 0;
     const total = cards.length;
 
+    // atualiza posição e dots
     function update() {
 
-        // move carrossel
+        // move o carrossel
         track.style.transform = `translateX(-${index * 100}%)`;
 
-        // atualiza dots
+        // atualiza indicadores (dots)
         dots.forEach((dot, i) => {
             dot.classList.toggle("active", i === index);
         });
     }
 
+    // seta esquerda
     left.addEventListener("click", () => {
         index = Math.max(0, index - 1);
         update();
     });
 
+    // seta direita
     right.addEventListener("click", () => {
         index = Math.min(total - 1, index + 1);
         update();
@@ -91,9 +115,11 @@ function initMainCarousel() {
     update();
 }
 
-/* =========================
-   MINI CARROSSEL DOS TABS (NOVO - CORRIGIDO)
-========================= */
+
+/* =========================================================
+   MINI CARROSSEIS (TABS)
+========================================================= */
+
 function initMiniCarousels() {
 
     const carousels = document.querySelectorAll(".mini-carousel");
@@ -108,38 +134,45 @@ function initMiniCarousels() {
 
         let index = 0;
 
+        // calcula largura real do card
         function getCardWidth() {
             const card = track.querySelector(".mini-card");
             if (!card) return 0;
             return card.getBoundingClientRect().width + 20; // margem
         }
 
+        // atualiza posição do carrossel
         function update() {
             const width = getCardWidth();
             track.style.transform = `translateX(-${index * width}px)`;
         }
 
+        // botão anterior
         prev.addEventListener("click", () => {
             const max = track.children.length - 1;
             index = Math.max(0, index - 1);
             update();
         });
 
+        // botão próximo
         next.addEventListener("click", () => {
             const max = track.children.length - 1;
             index = Math.min(max, index + 1);
             update();
         });
 
+        // responsividade
         window.addEventListener("resize", update);
 
         update();
     });
 }
 
-/* =========================
-   TABS
-========================= */
+
+/* =========================================================
+   SISTEMA DE TABS
+========================================================= */
+
 function initTabs() {
 
     const buttons = document.querySelectorAll(".tab-btn");
@@ -151,11 +184,14 @@ function initTabs() {
 
             const target = btn.getAttribute("data-tab");
 
+            // remove estado ativo de tudo
             buttons.forEach(b => b.classList.remove("active"));
             contents.forEach(c => c.classList.remove("active"));
 
+            // ativa botão clicado
             btn.classList.add("active");
 
+            // ativa conteúdo correspondente
             const section = document.getElementById(target);
 
             if (section) section.classList.add("active");
@@ -163,18 +199,22 @@ function initTabs() {
     });
 }
 
-/* =========================
-   MENU MOBILE 
-========================= */
+
+/* =========================================================
+   MENU MOBILE
+========================================================= */
 
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 
+// abre/fecha menu mobile
 if (menuBtn && mobileMenu) {
     menuBtn.addEventListener("click", () => {
         mobileMenu.classList.toggle("active");
     });
 }
+
+// fecha menu ao clicar fora
 document.addEventListener("click", (e) => {
     if (
         !mobileMenu.contains(e.target) &&

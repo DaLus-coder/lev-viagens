@@ -1,3 +1,7 @@
+/* =========================================================
+   RESET GERAL
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +13,10 @@ body {
     background: #f4f4f4;
 }
 
-/* TOPO */
+
+/* =========================================================
+   HERO (TOPO PRINCIPAL)
+========================================================= */
 
 .hero {
     background: #012f87;
@@ -29,52 +36,45 @@ body {
     font-weight: 800;
     line-height: 1.05;
     margin-bottom: 15px;
-
     color: white;
 }
 
 .hero p {
     font-size: clamp(1rem, 3vw, 1.2rem);
-
     max-width: 500px;
-
     margin: 0 auto;
-
     padding: 0 20px;
-
     color: #eee;
 }
 
-/* ÁREA DE BAIXO */
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+========================================================= */
 
 .content {
     position: relative;
     min-height: 900px;
 }
 
-/* CARD FLUTUANTE */
+
+/* =========================================================
+   CARROSSEL PRINCIPAL (CARD FLUTUANTE)
+========================================================= */
 
 .carousel-wrapper {
-
     width: 900px;
     max-width: 90%;
-
     margin: auto;
-
     position: relative;
-
     top: -180px;
 }
-
-/* CARROSSEL */
 
 .carousel {
     overflow: hidden;
     border-radius: 35px;
     border: 1px solid rgb(43, 43, 43);
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, .15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .15);
 }
 
 .carousel-track {
@@ -108,51 +108,37 @@ body {
 }
 
 .card-info button {
-
     border: none;
-
     background: #efb400;
-
     color: white;
-
     padding: 16px 40px;
-
     border-radius: 50px;
-
     font-size: 1rem;
-
     font-weight: bold;
-
     cursor: pointer;
 }
 
-/* SETAS */
+
+/* =========================================================
+   SETAS DO CARROSSEL
+========================================================= */
 
 .arrow {
-
     width: 60px;
     height: 60px;
 
-    border: none;
-
     border: 1px solid rgb(43, 43, 43);
-
     border-radius: 50%;
-
     background: white;
 
     box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
 
     position: absolute;
-
     top: 50%;
-
     transform: translateY(-50%);
 
     cursor: pointer;
-
     font-size: 2rem;
-
     z-index: 10;
 }
 
@@ -164,26 +150,22 @@ body {
     right: -90px;
 }
 
-/* BOLINHAS */
+
+/* =========================================================
+   INDICADORES (DOTS)
+========================================================= */
 
 .dots {
-
     display: flex;
-
     justify-content: center;
-
     gap: 12px;
-
     margin-top: -120px;
 }
 
 .dot {
-
     width: 12px;
     height: 12px;
-
     border-radius: 50%;
-
     background: #ccc;
 }
 
@@ -191,32 +173,26 @@ body {
     background: #efb400;
 }
 
-/* BENEFÍCIOS */
+
+/* =========================================================
+   BENEFÍCIOS
+========================================================= */
 
 .benefits {
-
     width: 1200px;
     max-width: 90%;
-
     margin: 80px auto;
 
     display: grid;
-
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
     gap: 30px;
 }
 
 .benefit {
-
     background: white;
-
     padding: 25px;
-
     border-radius: 20px;
-
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, .05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
 }
 
 .benefit h3 {
@@ -227,7 +203,10 @@ body {
     color: #666;
 }
 
-/* RESPONSIVO */
+
+/* =========================================================
+   RESPONSIVO GERAL
+========================================================= */
 
 @media(max-width:768px) {
 
@@ -246,31 +225,19 @@ body {
     .right {
         right: -20px;
     }
-}
-
-@media (max-width: 768px) {
 
     .hero {
-
         height: 650px;
-
         padding-top: 170px;
     }
 
     .hero-content {
-
         width: 100%;
-
         padding: 0 20px;
     }
 
     .carousel-wrapper {
-
         top: -140px;
-    }
-
-    .card img {
-        height: 220px;
     }
 
     .card-info {
@@ -292,7 +259,6 @@ body {
     .right {
         right: -10px;
     }
-
 }
 
 @media (max-width: 420px) {
@@ -323,7 +289,6 @@ body {
         width: 95%;
         top: -120px;
     }
-
 }
 
 @media (max-width: 251px) {
@@ -354,37 +319,31 @@ body {
         width: 95%;
         top: -120px;
     }
-
 }
 
-/*header style*/
 
-/* HEADER MOBILE */
+/* =========================================================
+   HEADER MOBILE
+========================================================= */
 
 .mobile-header {
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 100%;
-
     z-index: 9999;
 }
 
 .logo-island {
     position: absolute;
-
     top: 0;
     left: 50%;
-
     transform: translateX(-50%);
 
     width: 120px;
     height: 100px;
 
     background: #FFB700;
-
     border-radius: 0 0 25px 25px;
 
     display: flex;
@@ -399,9 +358,7 @@ body {
 }
 
 .menu-btn {
-
     position: absolute;
-
     top: 15px;
     right: 15px;
 
@@ -409,24 +366,18 @@ body {
     height: 55px;
 
     border: none;
-
     border-radius: 50%;
-
     background: white;
 
     font-size: 28px;
-
     cursor: pointer;
 
     z-index: 10001;
-
     box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
 }
 
 .mobile-menu {
-
     position: fixed;
-
     top: 0;
     right: -280px;
 
@@ -434,11 +385,9 @@ body {
     height: 100vh;
 
     background: white;
-
     transition: .3s;
 
     z-index: 10000;
-
     padding-top: 120px;
 
     box-shadow: -10px 0 30px rgba(0, 0, 0, .15);
@@ -450,159 +399,152 @@ body {
 
 .mobile-menu a {
     display: block;
-
     padding: 18px;
-
     text-decoration: none;
-
     color: #222;
-
     font-weight: 600;
-
     border-bottom: 1px solid #eee;
-
     transition: 0.2s;
 }
 
-.mobile-menu a:hover{
+.mobile-menu a:hover {
     background: #858585;
 }
 
-/*_____________________________________________________________________________________________________*/
-/*_____________________________________________________________________________________________________*/
-/*_____________________________________________________________________________________________________*/
-/*_____________________________________________________________________________________________________*/
-/*_____________________________________________________________________________________________________*/
-/*_____________________________________________________________________________________________________*/
 
-/*folders content style*/
+/* =========================================================
+   TABS / SEÇÃO DE CONTEÚDO
+========================================================= */
 
-.tabs-section{
-    width:1200px;
-    max-width:90%;
-    margin:60px auto;
+.tabs-section {
+    width: 1200px;
+    max-width: 90%;
+    margin: 60px auto;
 }
 
-.tabs-header{
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    margin-bottom:40px;
+.tabs-header {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
 }
 
-.tab-btn{
-    border:none;
-    background:none;
-    cursor:pointer;
-    font-weight:600;
-    padding:10px;
-    color:#777;
+.tab-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 10px;
+    color: #777;
 }
 
-.tab-btn.active{
-    color:#012f87;
-    border-bottom:3px solid #efb400;
+.tab-btn.active {
+    color: #012f87;
+    border-bottom: 3px solid #efb400;
 }
 
-.tab-content{
-    display:none;
+.tab-content {
+    display: none;
 }
 
-.tab-content.active{
-    display:block;
+.tab-content.active {
+    display: block;
 }
 
-.mini-carousel{
-    position:relative;
-    max-width:400px;
-    margin:auto;
+
+/* =========================================================
+   MINI CARROSSEL
+========================================================= */
+
+.mini-carousel {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
 }
 
-.mini-window{
-    overflow:hidden;
+.mini-window {
+    overflow: hidden;
 }
 
-.mini-track{
-    display:flex;
+.mini-track {
+    display: flex;
     transition: transform .4s ease;
     will-change: transform;
 }
 
-.mini-card{
-    min-width:75%;
-    margin:0 2.5%;
+.mini-card {
+    min-width: 75%;
+    margin: 0 2.5%;
 
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
 
-    background:white;
-    border-radius:20px;
-    overflow:hidden;
-    flex-shrink:0;
-
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
 }
 
-.mini-card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
+.mini-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
 }
 
-.mini-card h3{
-    padding:20px 20px 10px;
+.mini-card h3 {
+    padding: 20px 20px 10px;
 }
 
-.mini-card p{
-    padding:0 20px;
-    color:#666;
+.mini-card p {
+    padding: 0 20px;
+    color: #666;
 }
 
-.mini-card button{
-    margin:20px;
-
-    border:none;
-
-    background:#efb400;
-
-    color:white;
-
-    padding:14px 28px;
-
-    border-radius:50px;
-
-    cursor:pointer;
+.mini-card button {
+    margin: 20px;
+    border: none;
+    background: #efb400;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
-.mini-arrow{
 
-    position:absolute;
+/* =========================================================
+   SETAS MINI CARROSSEL
+========================================================= */
 
-    top:50%;
+.mini-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 
-    transform:translateY(-50%);
+    width: 50px;
+    height: 50px;
 
-    width:50px;
-    height:50px;
+    border: none;
+    border-radius: 50%;
 
-    border:none;
+    background: white;
 
-    border-radius:50%;
+    cursor: pointer;
+    z-index: 5;
 
-    background:white;
-
-    cursor:pointer;
-
-    z-index:5;
-
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
 }
 
-.prev{
-    left:-15px;
+.prev {
+    left: -15px;
 }
 
-.next{
-    right:-15px;
+.next {
+    right: -15px;
 }
+
+
+/* =========================================================
+   AJUSTES FINAIS DO CARROSSEL
+========================================================= */
 
 .carousel {
     overflow: hidden;
@@ -618,4 +560,3 @@ body {
 .card {
     flex: 0 0 100%;
 }
-

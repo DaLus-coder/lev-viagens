@@ -2,170 +2,209 @@
 <html lang="pt-BR">
 
 <head>
+    <!-- ================= CONFIGURAÇÕES BÁSICAS ================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS principal da página -->
     <link rel="stylesheet" href="index.css">
+
+    <link rel="icon" href="../frontend/img/logo_lev_simplify.png">
+
     <title>Lev Viagens (home)</title>
 </head>
 
 <body>
 
-<header class="mobile-header">
+    <!-- =========================================================
+         HEADER MOBILE (LOGO + MENU)
+    ========================================================= -->
+    <header class="mobile-header">
 
-    <div class="logo-island">
-        <img src="img/logo_lev_simplify.png" alt="LEV Viagem">
-    </div>
+        <!-- LOGO CENTRAL (ILHA AMARELA) -->
+        <div class="logo-island">
+            <img src="img/logo_lev_simplify.png" alt="LEV Viagem">
+        </div>
 
-    <button id="menuBtn" class="menu-btn">☰</button>
+        <!-- BOTÃO MENU MOBILE -->
+        <button id="menuBtn" class="menu-btn">☰</button>
 
-    <nav id="mobileMenu" class="mobile-menu">
-        <a href="#">Início</a>
-        <a href="#">Minha conta</a>
-        <a href="#">Alugueis</a>
-        <a href="#">Passeios</a>
-    </nav>
+        <!-- MENU LATERAL MOBILE -->
+        <nav id="mobileMenu" class="mobile-menu">
+            <a href="#">Início</a>
+            <a href="#">Minha conta</a>
+            <a href="#">Alugueis</a>
+            <a href="#">Passeios</a>
+        </nav>
 
-</header>
+    </header>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-        <h1>Mais Reservados</h1>
-        <p>Escolha o melhor equipamento para sua aventura.</p>
-    </div>
-</section>
+    <!-- =========================================================
+         HERO (SEÇÃO PRINCIPAL)
+    ========================================================= -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Mais Reservados</h1>
+            <p>Escolha o melhor equipamento para sua aventura.</p>
+        </div>
+    </section>
 
-<section class="content">
+    <!-- =========================================================
+         CONTEÚDO PRINCIPAL
+    ========================================================= -->
+    <section class="content">
 
-    <!-- CARROSSEL PRINCIPAL (FIXO) -->
-    <div class="carousel-wrapper">
+        <!-- =====================================================
+             CARROSSEL PRINCIPAL (FIXO)
+        ===================================================== -->
+        <div class="carousel-wrapper">
 
-        <button class="arrow left">&#10094;</button>
+            <!-- seta esquerda -->
+            <button class="arrow left">&#10094;</button>
 
-        <div class="carousel">
-            <div class="carousel-track">
+            <div class="carousel">
+                <div class="carousel-track">
 
-                <div class="card">
-                    <img src="img/img_cards/snowland.jpg">
-                    <div class="card-info">
-                        <h2>SnowLand</h2>
-                        <p>Experiencia e emoção na neve com sua familia!</p>
-                        <button>Reservar Agora</button>
+                    <!-- CARD 1 -->
+                    <div class="card">
+                        <img src="img/img_cards/snowland.jpg">
+                        <div class="card-info">
+                            <h2>SnowLand</h2>
+                            <p>Experiencia e emoção na neve com sua familia!</p>
+                            <button>Reservar Agora</button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <img src="img/carrinho.jpeg">
-                    <div class="card-info">
-                        <h2>Carrinho para bebê</h2>
-                        <p>Tenha conforto e segurança para quem precisa</p>
-                        <button>Alugar Agora</button>
+                    <!-- CARD 2 -->
+                    <div class="card">
+                        <img src="img/carrinho.jpeg">
+                        <div class="card-info">
+                            <h2>Carrinho para bebê</h2>
+                            <p>Tenha conforto e segurança para quem precisa</p>
+                            <button>Alugar Agora</button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <img src="img/img_cards/noite_gaucha.jpeg">
-                    <div class="card-info">
-                        <h2>DiPietro</h2>
-                        <p>Experiencias suiças no friozinho do rio grande do sul!</p>
-                        <button>Reservar Agora</button>
+                    <!-- CARD 3 -->
+                    <div class="card">
+                        <img src="img/img_cards/noite_gaucha.jpeg">
+                        <div class="card-info">
+                            <h2>DiPietro</h2>
+                            <p>Experiencias suiças no friozinho do rio grande do sul!</p>
+                            <button>Reservar Agora</button>
+                        </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
 
-        <button class="arrow right">&#10095;</button>
-
-    </div>
-
-    <!-- DOTS -->
-    <div class="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
-
-    <!-- TABS (SEM onclick, CONTROLADO PELO JS) -->
-    <section class="tabs-section">
-
-        <div class="tabs-header">
-
-            <button class="tab-btn active" data-tab="alugueis">Aluguéis</button>
-            <button class="tab-btn" data-tab="experiencias">Experiências</button>
-            <button class="tab-btn" data-tab="gastronomia">Gastronomia</button>
+            <!-- seta direita -->
+            <button class="arrow right">&#10095;</button>
 
         </div>
 
-        <!-- ALUGUEIS -->
-        <div class="tab-content active" id="alugueis">
-            <div class="mini-carousel">
-                <button class="mini-arrow prev">&#10094;</button>
-
-                <div class="mini-window">
-                    <div class="mini-track" id="alugueis-track"></div>
-                </div>
-
-                <button class="mini-arrow next">&#10095;</button>
-            </div>
+        <!-- =====================================================
+             INDICADORES (DOTS)
+        ===================================================== -->
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
 
-        <!-- EXPERIENCIAS -->
-        <div class="tab-content" id="experiencias">
-            <div class="mini-carousel">
-                <button class="mini-arrow prev">&#10094;</button>
+        <!-- =====================================================
+             SEÇÃO DE TABS (CATEGORIAS)
+        ===================================================== -->
+        <section class="tabs-section">
 
-                <div class="mini-window">
-                    <div class="mini-track" id="experiencias-track"></div>
-                </div>
+            <!-- BOTÕES DAS TABS -->
+            <div class="tabs-header">
 
-                <button class="mini-arrow next">&#10095;</button>
+                <button class="tab-btn active" data-tab="alugueis">Aluguéis</button>
+                <button class="tab-btn" data-tab="experiencias">Experiências</button>
+                <button class="tab-btn" data-tab="gastronomia">Gastronomia</button>
+
             </div>
-        </div>
 
-        <!-- GASTRONOMIA -->
-        <div class="tab-content" id="gastronomia">
-            <div class="mini-carousel">
-                <button class="mini-arrow prev">&#10094;</button>
+            <!-- =================================================
+                 TAB: ALUGUEIS
+            ================================================= -->
+            <div class="tab-content active" id="alugueis">
+                <div class="mini-carousel">
+                    <button class="mini-arrow prev">&#10094;</button>
 
-                <div class="mini-window">
-                    <div class="mini-track" id="gastronomia-track"></div>
+                    <div class="mini-window">
+                        <div class="mini-track" id="alugueis-track"></div>
+                    </div>
+
+                    <button class="mini-arrow next">&#10095;</button>
                 </div>
-
-                <button class="mini-arrow next">&#10095;</button>
             </div>
+
+            <!-- =================================================
+                 TAB: EXPERIENCIAS
+            ================================================= -->
+            <div class="tab-content" id="experiencias">
+                <div class="mini-carousel">
+                    <button class="mini-arrow prev">&#10094;</button>
+
+                    <div class="mini-window">
+                        <div class="mini-track" id="experiencias-track"></div>
+                    </div>
+
+                    <button class="mini-arrow next">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- =================================================
+                 TAB: GASTRONOMIA
+            ================================================= -->
+            <div class="tab-content" id="gastronomia">
+                <div class="mini-carousel">
+                    <button class="mini-arrow prev">&#10094;</button>
+
+                    <div class="mini-window">
+                        <div class="mini-track" id="gastronomia-track"></div>
+                    </div>
+
+                    <button class="mini-arrow next">&#10095;</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =====================================================
+             BENEFÍCIOS
+        ===================================================== -->
+        <div class="benefits">
+
+            <div class="benefit">
+                <h3>Segurança Total</h3>
+                <p>Equipamentos revisados e seguros para você.</p>
+            </div>
+
+            <div class="benefit">
+                <h3>Melhores Avaliações</h3>
+                <p>Clientes satisfeitos e aventuras inesquecíveis.</p>
+            </div>
+
+            <div class="benefit">
+                <h3>Suporte 24h</h3>
+                <p>Atendimento sempre disponível.</p>
+            </div>
+
+            <div class="benefit">
+                <h3>Melhores Preços</h3>
+                <p>Condições especiais para você.</p>
+            </div>
+
         </div>
 
     </section>
 
-    <!-- BENEFITS -->
-    <div class="benefits">
-
-        <div class="benefit">
-            <h3>Segurança Total</h3>
-            <p>Equipamentos revisados e seguros para você.</p>
-        </div>
-
-        <div class="benefit">
-            <h3>Melhores Avaliações</h3>
-            <p>Clientes satisfeitos e aventuras inesquecíveis.</p>
-        </div>
-
-        <div class="benefit">
-            <h3>Suporte 24h</h3>
-            <p>Atendimento sempre disponível.</p>
-        </div>
-
-        <div class="benefit">
-            <h3>Melhores Preços</h3>
-            <p>Condições especiais para você.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<script src="index.js"></script>
+    <!-- SCRIPT PRINCIPAL -->
+    <script src="index.js"></script>
 
 </body>
+
 </html>
