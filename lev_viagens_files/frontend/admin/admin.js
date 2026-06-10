@@ -139,7 +139,7 @@ async function remove(id) {
 
 /* ================= CLEAR ================= */
 
-function clear(){
+function clear() {
     document.getElementById("titulo").value = "";
     document.getElementById("descricao").value = "";
     document.getElementById("imagem").value = "";
