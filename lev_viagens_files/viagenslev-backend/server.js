@@ -4,6 +4,8 @@ require('dotenv').config();
 
 const app = express();
 
+const equipamentosRoutes = require('./routes/equipamentos');
+
 app.use(cors());
 app.use(express.json());
 
@@ -13,26 +15,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// PRIMEIRA ROTA
-app.get('/equipamentos', (req, res) => {
-    res.json([
-        {
-            id: 1,
-            nome: 'Scooter Elétrica',
-            preco: 120
-        },
-        {
-            id: 2,
-            nome: 'Carrinho para Bebê',
-            preco: 50
-        },
-        {
-            id: 3,
-            nome: 'Andador para Idoso',
-            preco: 40
-        }
-    ]);
-});
+app.use('/equipamentos', equipamentosRoutes);
 
 const PORT = 3000;
 
