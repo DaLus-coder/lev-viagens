@@ -3,11 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS ViagensLev</title>
 
     <style>
         body {
+            margin: 0;
             font-family: Arial;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background: #012f87;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+
+        .nav-item {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            border: none;
+            background: transparent;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            background: #efb400;
+            color: #000;
+            border-radius: 8px;
+        }
+
+        .cms-content {
+            margin-left: 270px;
             padding: 20px;
         }
 
@@ -27,38 +69,115 @@
         .card-admin {
             border: 1px solid #ddd;
             padding: 10px;
-            margin: 10px 0;
+            margin: 10px;
             border-radius: 8px;
+            width: 200px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .card-admin img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 3000;
+            background: #012f87;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 20px;
+            border-radius: 8px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                left: auto;
+                right: 0;
+                transform: translateX(100%);
+                z-index: 3000;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .cms-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .overlay.active {
+                display: block;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<h1>CMS ViagensLev</h1>
+<button class="menu-toggle" id="menuToggle">☰</button>
+<div class="overlay" id="overlay"></div>
 
-<!-- FORM CORRIGIDO -->
-<input id="titulo" placeholder="Título">
-<input id="descricao" placeholder="Descrição">
+<aside class="sidebar" id="sidebar">
+    <h2>CMS ViagensLev</h2>
 
-<input type="file" id="file">
-<button onclick="uploadImagem()">Upload imagem</button>
+    <button class="nav-item active">Cards</button>
+    <button class="nav-item">Clientes</button>
+    <button class="nav-item">Reservas</button>
+</aside>
 
-<input id="imagem" placeholder="URL da imagem">
+<div class="cms-content">
 
-<select id="categoria">
-    <option value="alugueis">Alugueis</option>
-    <option value="experiencias">Experiencias</option>
-    <option value="gastronomia">Gastronomia</option>
-</select>
+    <h1>Gerenciar Cards</h1>
 
-<input id="botao_texto" placeholder="Texto do botão">
+    <input id="titulo" placeholder="Título">
+    <input id="descricao" placeholder="Descrição">
 
-<button onclick="saveCard()">Salvar card</button>
+    <input type="file" id="file">
+    <button onclick="uploadImagem()">Upload imagem</button>
 
-<hr>
+    <input id="imagem" placeholder="URL da imagem">
 
-<div id="listaCards"></div>
+    <select id="categoria">
+        <option value="alugueis">Alugueis</option>
+        <option value="experiencias">Experiencias</option>
+        <option value="gastronomia">Gastronomia</option>
+    </select>
+
+    <input id="botao_texto" placeholder="Texto do botão">
+
+    <button onclick="saveCard()">Salvar card</button>
+
+    <hr>
+
+    <div id="listaCards" class="cards-container"></div>
+
+</div>
 
 <script src="admin.js"></script>
 
