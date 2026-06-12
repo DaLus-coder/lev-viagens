@@ -137,12 +137,18 @@ app.delete('/api/admin/cards/:id', async (req, res) => {
 const multer = require('multer');
 const path = require('path');
 
+const fs = require('fs');
+
+if (!fs.existsSync('/data/uploads')) {
+    fs.mkdirSync('/data/uploads', { recursive: true });
+}
+
 // Configuração de armazenamento de arquivos
 const storage = multer.diskStorage({
 
     // pasta de destino
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, '/data/uploads');
     },
 
     // nome do arquivo salvo
@@ -151,11 +157,12 @@ const storage = multer.diskStorage({
     }
 });
 
+
 // inicialização do multer
 const upload = multer({ storage });
 
 // libera acesso público à pasta uploads
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('/data/uploads'));
 
 
 /* =========================================================
@@ -213,14 +220,14 @@ app.post('/api/auth/register', async (req, res) => {
 
     } catch (err) {
 
-    console.error("ERRO CARDS:", err);
+        console.error("ERRO CARDS:", err);
 
-    res.status(500).json({
-        error: err.message,
-        code: err.code,
-        sqlMessage: err.sqlMessage
-    });
-}
+        res.status(500).json({
+            error: err.message,
+            code: err.code,
+            sqlMessage: err.sqlMessage
+        });
+    }
 });
 
 /* =========================================================
