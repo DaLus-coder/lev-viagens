@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login CMS - ViagensLev</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f4f4f4;
+    font-family:Arial;
+}
+
+.login-box{
+    width:350px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+h1{
+    text-align:center;
+    color:#012f87;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#efb400;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="login-box">
+
+    <h1>CMS ViagensLev</h1>
+
+    <input
+        id="usuario"
+        placeholder="Usuário"
+    >
+
+    <input
+        id="senha"
+        type="password"
+        placeholder="Senha"
+    >
+
+    <button onclick="loginAdmin()">
+        Entrar
+    </button>
+
+</div>
+
+<script src="login.js"></script>
+
+</body>
+</html>

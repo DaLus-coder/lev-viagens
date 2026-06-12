@@ -1,3 +1,7 @@
+if(localStorage.getItem("adminLogado") !== "true"){
+    window.location.href = "login.html";
+}
+
 /* =========================================================
    CONFIGURAÇÃO BASE DA API E VARIÁVEIS GLOBAIS
 ========================================================= */
@@ -259,3 +263,13 @@ async function uploadImagem() {
 
 // Carrega cards ao abrir página
 load();
+
+function logoutAdmin(){
+
+    localStorage.removeItem(
+        "adminLogado"
+    );
+
+    window.location.href =
+        "login.html";
+}

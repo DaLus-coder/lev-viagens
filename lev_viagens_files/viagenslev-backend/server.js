@@ -299,3 +299,24 @@ app.post('/api/register', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+app.post('/api/admin/login', async (req, res) => {
+
+    const { usuario, senha } = req.body;
+
+    const [rows] = await pool.query(
+        'SELECT * FROM admins WHERE usuario = ? AND senha = ?',
+        [usuario, senha]
+    );
+
+    if (rows.length === 0) {
+        return res.status(401).json({
+            error: 'Login inválido'
+        });
+    }
+
+    res.json({
+        ok: true
+    });
+
+});
