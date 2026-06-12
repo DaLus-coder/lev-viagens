@@ -2,7 +2,7 @@
    CONFIGURAÇÃO BASE DA API E VARIÁVEIS GLOBAIS
 ========================================================= */
 
-const API = "http://localhost:3000/api";
+const API = "https://lev-viagens-production.up.railway.app/api";
 
 // ID do card em edição (null = criando novo)
 let editId = null;
