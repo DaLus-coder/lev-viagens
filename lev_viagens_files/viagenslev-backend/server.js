@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
 console.log("DB_HOST =", process.env.DB_HOST);
 console.log("DB_USER =", process.env.DB_USER);
 console.log("DB_NAME =", process.env.DB_NAME);
@@ -186,6 +189,61 @@ app.post('/api/upload', upload.single('imagem'), (req, res) => {
 /* =========================================================
    INICIALIZAÇÃO DO SERVIDOR
 ========================================================= */
+
+app.post('/api/admin/login', async (req, res) => {
+
+    try {
+
+        const { usuario, senha } = req.body;
+
+        const [rows] = await pool.query(
+            'SELECT * FROM admins WHERE usuario = ?',
+            [usuario]
+        );
+
+        if (rows.length === 0) {
+            return res.status(401).json({
+                error: 'Usuário inválido'
+            });
+        }
+
+        const admin = rows[0];
+
+        const senhaOk = await bcrypt.compare(
+            senha,
+            admin.senha
+        );
+
+        if (!senhaOk) {
+            return res.status(401).json({
+                error: 'Senha inválida'
+            });
+        }
+
+        const token = jwt.sign(
+            {
+                id: admin.id
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: '7d'
+            }
+        );
+
+        res.json({
+            token
+        });
+
+    } catch (err) {
+
+        res.status(500).json({
+            error: err.message
+        });
+
+    }
+
+});
+
 
 const PORT = process.env.PORT || 3000;
 
