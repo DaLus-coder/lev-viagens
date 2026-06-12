@@ -168,3 +168,103 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
 });
+
+/* =========================================================
+   ROTA PARA CADASTRO
+========================================================= */
+
+app.post('/api/auth/register', async (req, res) => {
+    try {
+        const { nome, email, senha, cidade, telefone } = req.body;
+
+        const [user] = await pool.query(
+            "SELECT * FROM usuarios WHERE email = ?",
+            [email]
+        );
+
+        if (user.length > 0) {
+            return res.status(400).json({ error: "Email já existe" });
+        }
+
+        await pool.query(
+            `INSERT INTO usuarios (nome, email, senha, cidade, telefone)
+             VALUES (?, ?, ?, ?, ?)`,
+            [nome, email, senha, cidade, telefone]
+        );
+
+        res.json({ message: "user created" });
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+/* =========================================================
+   ROTA PARA LOGIN
+========================================================= */
+
+app.post('/api/auth/login', async (req, res) => {
+    try {
+        const { email, senha } = req.body;
+
+        const [rows] = await pool.query(
+            "SELECT * FROM usuarios WHERE email = ? AND senha = ?",
+            [email, senha]
+        );
+
+        if (rows.length === 0) {
+            return res.status(401).json({ error: "Credenciais inválidas" });
+        }
+
+        res.json({
+            message: "login ok",
+            user: rows[0]
+        });
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.post('/api/login', async (req, res) => {
+
+    const { email, senha } = req.body;
+
+    try {
+
+        const [rows] = await pool.query(
+            'SELECT * FROM usuarios WHERE email = ? AND senha = ?',
+            [email, senha]
+        );
+
+        if (rows.length === 0) {
+            return res.status(401).json({ error: "Email ou senha inválidos" });
+        }
+
+        res.json({
+            user: rows[0]
+        });
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.post('/api/register', async (req, res) => {
+
+    const { nome, email, senha, cidade, telefone } = req.body;
+
+    try {
+
+        await pool.query(
+            `INSERT INTO usuarios (nome, email, senha, cidade, telefone)
+             VALUES (?, ?, ?, ?, ?)`,
+            [nome, email, senha, cidade, telefone]
+        );
+
+        res.json({ ok: true });
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});

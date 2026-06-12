@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="login.css">
+    <title>Minha Conta - Lev Viagens</title>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <!-- TOPO -->
+    <div class="login-header">
+        <h1>Minha Conta</h1>
+        <p>Entre ou crie sua conta para continuar</p>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="section">
+
+        <h2>Login</h2>
+
+        <input id="email" placeholder="Email">
+        <input id="senha" type="password" placeholder="Senha">
+
+        <label class="checkbox">
+            <input type="checkbox" id="saveLogin">
+            Salvar login
+        </label>
+
+        <button class="btn-primary" onclick="login()">Entrar</button>
+
+    </div>
+
+    <hr>
+
+    <!-- CADASTRO -->
+    <div class="section">
+
+        <h2>Criar conta</h2>
+
+        <input id="nome" placeholder="Nome completo">
+
+        <input id="emailReg" placeholder="Email">
+        <input id="emailReg2" placeholder="Confirmar email">
+
+        <input id="senhaReg" type="password" placeholder="Senha">
+        <input id="senhaReg2" type="password" placeholder="Confirmar senha">
+
+        <input id="cidade" placeholder="Cidade">
+        <input id="telefone" placeholder="Telefone">
+
+        <button class="btn-secondary" onclick="register()">Criar conta</button>
+
+    </div>
+
+</div>
+<script src="auth.js"></script>
+<script src="login.js"></script>
+
+</body>
+</html>

@@ -223,3 +223,74 @@ document.addEventListener("click", (e) => {
         mobileMenu.classList.remove("active");
     }
 });
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+function reservar() {
+
+    if (!user) {
+        alert("Você precisa estar logado");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // continua reserva normalmente
+}
+
+//status login
+function renderUser() {
+
+    const area = document.getElementById("userArea");
+    const user = getUser();
+
+    if (!area) return;
+
+    if (user) {
+        area.innerHTML = `
+            <span>Olá, ${user.nome}</span>
+            <button onclick="logout()">Sair</button>
+        `;
+    } else {
+        area.innerHTML = `
+            <a href="login.html">Minha conta</a>
+        `;
+    }
+}
+
+window.addEventListener("load", renderUser);
+
+function reservar() {
+
+    const user = getUser();
+
+    if (!user) {
+        alert("Você precisa estar logado");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // continua fluxo normal
+}
+
+window.addEventListener("load", () => {
+    renderUser();
+});
+
+function renderUser() {
+
+    const user = getUser();
+    const area = document.getElementById("userArea");
+
+    if (!area) return;
+
+    if (user) {
+        area.innerHTML = `
+            <span>Bem-vindo, ${user.nome}</span>
+            <button onclick="logout()">Sair</button>
+        `;
+    } else {
+        area.innerHTML = `
+            <a href="login.html">Minha conta</a>
+        `;
+    }
+}

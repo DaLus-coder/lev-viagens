@@ -1,0 +1,199 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    overflow: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.login-header {
+    background: #012f87;
+
+    color: #fff;
+
+    padding: 25px 20px;
+
+    text-align: center;
+}
+
+.login-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+.section {
+    padding: 20px;
+}
+
+.section h2 {
+    margin-bottom: 10px;
+    color: #012f87;
+    font-size: 1.1rem;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input {
+    width: 100%;
+
+    padding: 12px;
+
+    margin: 6px 0;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #012f87;
+    box-shadow: 0 0 0 3px rgba(1,47,135,0.12);
+}
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: 10px 0;
+
+    font-size: 0.9rem;
+
+    color: #444;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.btn-primary {
+    width: 100%;
+
+    padding: 12px;
+
+    background: #efb400;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    opacity: 0.85;
+}
+
+.btn-secondary {
+    width: 100%;
+
+    padding: 12px;
+
+    background: #012f87;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-secondary:hover {
+    opacity: 0.9;
+}
+
+/* =========================
+   DIVISOR
+========================= */
+
+hr {
+    border: none;
+
+    border-top: 1px solid #eee;
+
+    margin: 10px 0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .login-container {
+        border-radius: 14px;
+    }
+
+    .login-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .section {
+        padding: 15px;
+    }
+}
