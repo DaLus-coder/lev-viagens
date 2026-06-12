@@ -195,8 +195,15 @@ app.post('/api/auth/register', async (req, res) => {
         res.json({ message: "user created" });
 
     } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
+
+    console.error("ERRO CARDS:", err);
+
+    res.status(500).json({
+        error: err.message,
+        code: err.code,
+        sqlMessage: err.sqlMessage
+    });
+}
 });
 
 /* =========================================================
