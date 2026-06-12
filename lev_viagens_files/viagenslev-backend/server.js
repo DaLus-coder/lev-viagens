@@ -25,9 +25,11 @@ app.get('/', (req, res) => {
 ========================================================= */
 
 app.get('/api/cards', async (req, res) => {
+
+    console.log("ROTA /api/cards CHAMADA");
+
     try {
 
-        // Busca todos os cards ordenados do mais recente
         const [rows] = await pool.query(
             'SELECT * FROM cards ORDER BY id DESC'
         );
@@ -35,7 +37,16 @@ app.get('/api/cards', async (req, res) => {
         res.json(rows);
 
     } catch (err) {
-        res.status(500).json({ error: err.message });
+
+        console.error("ERRO COMPLETO:", err);
+
+        res.status(500).json({
+            error: String(err),
+            name: err?.name,
+            message: err?.message,
+            code: err?.code,
+            stack: err?.stack
+        });
     }
 });
 
