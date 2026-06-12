@@ -154,7 +154,7 @@ app.post('/api/upload', upload.single('imagem'), (req, res) => {
 
     // retorna URL pública da imagem
     res.json({
-        url: `http://localhost:3000/uploads/${req.file.filename}`
+        url: `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`
     });
 });
 
@@ -163,7 +163,7 @@ app.post('/api/upload', upload.single('imagem'), (req, res) => {
    INICIALIZAÇÃO DO SERVIDOR
 ========================================================= */
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
