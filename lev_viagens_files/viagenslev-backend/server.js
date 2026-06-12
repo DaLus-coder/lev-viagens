@@ -190,6 +190,12 @@ app.post('/api/upload', upload.single('imagem'), (req, res) => {
    INICIALIZAÇÃO DO SERVIDOR
 ========================================================= */
 
+app.get('/api/admin/login', (req, res) => {
+    res.json({
+        status: 'rota admin login existe'
+    });
+});
+
 app.post('/api/admin/login', async (req, res) => {
 
     try {
