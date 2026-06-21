@@ -63,7 +63,7 @@ function createCard(card) {
         <img src="${card.imagem}">
         <h3>${card.titulo}</h3>
         <p>${card.descricao}</p>
-        <button href="https://wa.me/5554994049796?text=Olá,%20tenho%20interesse%20no%20carrinho%20de%20bebê">${card.botao_texto}</button>
+        <button>${card.botao_texto}</button>
     `;
 
     return div;
