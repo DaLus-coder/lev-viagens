@@ -19,7 +19,7 @@ body {
 ========================================================= */
 
 .hero {
-    background: #012f87;
+    background: #FFB700;
     height: 500px;
 
     display: flex;
@@ -375,7 +375,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.473);
 }
 
 .logo-island img {
@@ -398,7 +398,7 @@ body {
     cursor: pointer;
 
     z-index: 10001;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.329);
 }
 
 
