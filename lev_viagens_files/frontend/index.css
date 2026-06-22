@@ -13,6 +13,11 @@ body {
     background: #f4f4f4;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+
 
 /* =========================================================
    HERO (TOPO PRINCIPAL)
