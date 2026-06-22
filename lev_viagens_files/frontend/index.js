@@ -59,36 +59,16 @@ function createCard(card) {
     const div = document.createElement("div");
     div.className = "mini-card";
 
-    let botaoHtml = `
-        <button>${card.botao_texto}</button>
-    `;
-
-    // Apenas categoria alugueis
-    if (card.categoria === "alugueis") {
-
-        const mensagem = encodeURIComponent(
-            `Olá, tenho interesse em ${card.titulo}`
-        );
-
-        const whatsappUrl =
-            `https://wa.me/5554994049796?text=${mensagem}`;
-
-        botaoHtml = `
-            <button onclick="window.open('${whatsappUrl}','_blank')">
-                ${card.botao_texto}
-            </button>
-        `;
-    }
-
     div.innerHTML = `
         <img src="${card.imagem}">
         <h3>${card.titulo}</h3>
         <p>${card.descricao}</p>
-        ${botaoHtml}
+        <button>${card.botao_texto}</button>
     `;
 
     return div;
 }
+
 
 /* =========================================================
    CARROSSEL PRINCIPAL (HERO CAROUSEL)
