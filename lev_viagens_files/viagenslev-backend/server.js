@@ -25,6 +25,9 @@ app.get('/', (req, res) => {
     res.json({ mensagem: 'Servidor ViagensLev funcionando!' });
 });
 
+pool.on('error', (err) => {
+    console.error('ERRO NO POOL MYSQL:', err);
+});
 
 /* =========================================================
    ROTAS - CARDS (READ)
