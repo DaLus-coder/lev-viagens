@@ -7,6 +7,8 @@ console.log("DB_USER =", process.env.DB_USER);
 console.log("DB_NAME =", process.env.DB_NAME);
 console.log("DB_PORT =", process.env.DB_PORT);
 console.log("PASSWORD EXISTE =", !!process.env.DB_PASSWORD);
+console.log("MYSQL_PUBLIC_URL EXISTE =", !!process.env.MYSQL_PUBLIC_URL);
+console.log("MYSQL_PUBLIC_URL =", process.env.MYSQL_PUBLIC_URL);
 
 const pool = require('./database/conexao');
 
