@@ -6,7 +6,7 @@ if(localStorage.getItem("adminLogado") !== "true"){
    CONFIGURAÇÃO BASE DA API E VARIÁVEIS GLOBAIS
 ========================================================= */
 
-const API = "https://lev-viagens-production.up.railway.app/api";
+const API = "https://lev-viagem.onrender.com/api";
 
 // ID do card em edição (null = criando novo)
 let editId = null;
