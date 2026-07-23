@@ -139,8 +139,10 @@ const path = require('path');
 
 const fs = require('fs');
 
-if (!fs.existsSync('/data/uploads')) {
-    fs.mkdirSync('/data/uploads', { recursive: true });
+const uploadDir = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
 }
 
 // Configuração de armazenamento de arquivos
@@ -148,7 +150,7 @@ const storage = multer.diskStorage({
 
     // pasta de destino
     destination: (req, file, cb) => {
-        cb(null, '/data/uploads');
+        cb(null, uploadDir);
     },
 
     // nome do arquivo salvo
@@ -162,7 +164,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // libera acesso público à pasta uploads
-app.use('/uploads', express.static('/data/uploads'));
+app.use('/uploads', express.static(uploadDir));
 
 
 /* =========================================================
